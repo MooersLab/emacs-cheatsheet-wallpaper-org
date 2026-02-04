@@ -15,7 +15,7 @@ Create a desktop wallpaper displaying your most-used Emacs keybindings overlaid 
 ## 🌟 Features
 
 - **Two formats available:**
-  - [`EmacsCheatSheet.tex`](https://github.com/MooersLab/emacs-wallpaper) - Pure LaTeX file for LaTeX users
+  - [`EmacsCheatSheet.tex`](https://github.com/MooersLab/emacs-wallpaper-3) - Pure LaTeX file for LaTeX users
   - `EmacsCheatSheet.org` - Org-mode friendly version with detailed instructions
 - **Custom background image** - Use your own wallpaper
 - **Exact-size PDF output** - No margins, perfect for wallpapers (using `standalone` document class)
