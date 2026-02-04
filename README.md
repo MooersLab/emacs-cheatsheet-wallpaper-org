@@ -8,7 +8,7 @@
 
 Create a desktop wallpaper displaying your most-used Emacs keybindings overlaid on a background image. Perfect for learning, reference, or sharing your Emacs workflow. Designed to be beginner-friendly for org-mode users who may be uncomfortable with raw LaTeX.
 
-<p align="center"><img src="EmacsCheatsheet3.png" alt="Emacs Cheatsheet Example" width="1200" height="600"/></p>
+<p align="center"><img src="EmacsCheatSheet.pdf" alt="Emacs Cheatsheet Example" width="1200" height="600"/></p>
 
 ---
 
