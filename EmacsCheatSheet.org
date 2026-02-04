@@ -1,0 +1,326 @@
+#+TITLE: Emacs Key Bindings Cheat Sheet
+#+AUTHOR: Your Name Here
+#+OPTIONS: toc:nil date:nil title:nil author:nil
+
+# ============================================================
+# INSTRUCTIONS FOR ORG-MODE USERS
+# ============================================================
+#
+# This file creates a PDF at the EXACT SIZE of your image overlay
+# (not US Letter paper size).
+#
+# HOW TO USE:
+# 1. When you first open this file, Emacs will ask about "local variables"
+#    → Type 'y' and press Enter (this is safe - it just tells org-mode 
+#      to use the 'standalone' document class)
+#
+# 2. Change the image path on line 38 to YOUR background image:
+#    ~/Pictures/ChineseWall3.png  →  /path/to/your/image.png
+#
+# 3. Export to PDF:
+#    Press: C-c C-e l p
+#    (That's: Ctrl-c Ctrl-e, then l, then p)
+#
+# 4. Your PDF will be created at the size of your content!
+#
+# WHAT THIS DOES:
+# - Overlays your Emacs keybindings on top of a background image
+# - Uses TikZ to position text precisely
+# - Creates a PDF that's exactly the size needed (no extra margins)
+#
+# ============================================================
+
+#+LATEX_CLASS: standalone
+#+LATEX_CLASS_OPTIONS: [10.5pt]
+#+LATEX_HEADER: \usepackage{graphicx}
+#+LATEX_HEADER: \usepackage{xcolor}
+#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usepackage{array}
+#+LATEX_HEADER: \usepackage{parskip}
+#+LATEX_HEADER: \def\bll{\boldmath$<$}
+#+LATEX_HEADER: \def\blg{\boldmath$>$}
+
+#+BEGIN_EXPORT latex
+\begin{tikzpicture}
+    \color{lime}
+   % CHANGE THIS PATH TO YOUR IMAGE:
+   \node at (0,0) {\includegraphics[width=3.5\textwidth]{ChineseWall3.png}};
+   
+   % This positions the text overlay at coordinates (1.02, 0)
+   \node at (1.02,0) {
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COLUMN 1 - Undo, Save, Exit, Navigation, Buffer Control
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{minipage}{270pt}
+\begin{footnotesize}
+\begin{tabular}{>{\bfseries}l l}
+\noindent{\bfseries Undo, Save, Exit} & \\
+    C-u n & Repeat $<$comand$>$ n times.\\ 
+    C-g & No do last command. \\
+    C-x C-c & Exit. \\
+    C-x C-s & Save buffer to a file. \\
+    C-x C-w & Save to specified file. \\
+    C-c d & Delete trailing whitespace.\\
+    s-n & awesome-tab select visible tab.\\
+    C-x / g n & google-this, no prompt.\\
+    M-; & comment or uncomment lines. \\
+    M-i & Pop-up menu with buffer index.\\
+ & \\
+\noindent{\bfseries Navigation} & \\
+    C-v & Go to next page.\\
+    M-v & Go to previous page.\\
+    C-l & Move the screen around the cursor's line.\\ 
+    &(once $->$ center,\\ 
+    &twice $->$ top,\\ 
+    &three times $->$ bottom).\\
+    C-n & Next line.\\
+    C-p & Previous line.\\
+    C-b & Previous character (Backward).\\
+    C-f & Next character (Forward).\\
+    C-a & Beginning of line.\\
+    C-e & End of line.\\
+    M-f & Forward a word.\\
+    M-b & Backward a word.\\
+    M-a & Back to the beginning of the sentence.\\
+    M-e & Forward to the end of the sentence.\\
+    M-\blg:& Move to End of file.\\
+    M-\bll:& Move to the beginning of the file.\\
+    & \\
+\noindent{\bfseries Buffer control} & \\
+    C-x b & Select buffer; [tab] for possible buffers.\\
+    C-1 & Kill current buffer. \\
+    C-x 0 & Kill the current buffer. \\
+    C-x 1 & Kill all buffers except the current buffer.\\
+    C-x 2 & Split current window horizontally.\\
+    C-x 3 & Split current window vertically.\\
+    C-x o & Move cursor to the other window.\\
+    C-M-v & Scrolls other window.\\
+    C-x C-b & ibuffer.\\
+    C-x C-j & dired jump. \\
+    C-c m & Switch to minibuffer.\\
+    C-x o & moves the cursor to the other window.\\
+    C-M-v & Scroll other window.\\
+ & \\
+\noindent{\bfseries Delete and kill} & \\
+    \bll DEL\blg & Delete char just before point.\\
+    C-d & Delete char just after point.\\
+    M-\bll DEL\blg & Kill word just before the point.\\
+    M-d & Kill word just after the point.\\
+    C-k & Kill from point to end of line.\\
+    M-k & Kill from point to end of sentence.\\
+    C-w & Kill from mark to point.\\
+ & \\
+\noindent{\bfseries Tree-sitter} & \\
+    C-c o o  & Combobulate with tree-sitter.\\
+ & \\
+\noindent{\bfseries Clerk} & \\
+    M-RET & clerk show. \\
+\end{tabular}
+\end{footnotesize}
+\end{minipage}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COLUMN 2 - Yanking, Files, Search, Vertico, Org-node
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{minipage}{270pt}
+\begin{footnotesize}
+\begin{tabular}{>{\bfseries}l l}
+\noindent{\bfseries Restore killed text ``Yanking''} & \\
+    C-y & Restore last killed text.\\
+    M-y & Restore previously killed text.\\
+    C-/, C-x u, C-\_ & Undo last command.\\
+    C-\bll SPC\blg & Mark selection. \\
+ & \\
+\noindent{\bfseries Files \& Buffers} & \\
+   C-x C-f: & Find a file.\\
+   C-x C-s: & Save active file.\\
+   C-x C-b: & List buffers.\\
+   C-x b \bll BufferName\blg:& Visit buffer.\\
+   C-x s & Save some buffers.\\
+   C-x C-c & Exit emacs.\\
+   C-z & Suspend emacs\\
+   & return with \%emacs or 'fg'\\
+ & \\
+\noindent{\bfseries Search} & \\
+   C-s & Forward search \\
+   C-r & Backward search. \\
+   & Next: repeat C-s or C-r.\\
+ & \\
+\noindent{\bfseries Vertico} & \\
+   C-j & vertico next\\
+   C-k & vertico previous.\\
+   M-h & vertico directory up.\\
+ & \\
+\noindent{\bfseries Org-node}  & \\
+   M-o n f & org-node-first \\
+   M-o n i & org-node-insert- \\
+   M-o n <f1> & see all commands \\
+   M-o n b & org-node-context-dwin \\
+   M-o n g & org-node-grep \\
+   M-o n d & org-node-insert-into-related \\
+   M-o n n & org-node-nodeify-entry \\
+   M-o n w & org-node-refile \\
+   M-o n m & org-node-rename-file-by-title \\
+   M-o n s & org-node-seq-dispatch \\
+ & \\
+\noindent{\bfseries Various Commands} & \\
+   M-x replace-string & Replace string.\\
+   &(First letters and TAB \\
+   & are enough to show it.)\\
+   M-x recover-file & Restores the file.\\
+   M-x auto-fill-mode & Automatic breaks lines.\\
+   M-x text-mode & Human text.\\
+   C-x f \bll NumChars\blg : & Set column width.\\
+   M-q  & fill paragraph.\\
+   C-u 70 C-x f & 70 chars per line.\\
+ & \\
+\noindent{\bfseries Yasnippets} & \\
+    C-c y  & Invoke yasnippet hydra.\\
+    C-c y i & Insert snippet. \\
+    C-c y n & New snippet. \\
+    C-o & Expand snippet.\\
+ & \\
+\noindent{\bfseries Org-roam and citar} & \\
+    C-c n f & org-roam-find-note \\
+    C-c n i & org-roam-node-insert. \\
+    C-c n l & org-roam buffer toggle.\\
+    C-c n g & org-roam-graph \\
+    C-c n c & org-id-get-create. \\
+    C-c n j & org-roam-dailies-capture-today.\\
+    C-c b   & citar-insert-citation.\\
+\end{tabular}
+\end{footnotesize}
+\end{minipage}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COLUMN 3 - LaTeX, Help, Cider, Magit, Org-mode
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{minipage}{310pt}
+\begin{footnotesize}
+\begin{tabular}{>{\bfseries}l l}
+\noindent{\bfseries LaTeX} & \\
+    C-c C-j  & Insert a new item in a list.\\
+    C-c ; & Comment out region. \\
+    C-c \%   & Cooment out paragraph. \\
+    C-c TAB  & M-x tex-bibtex-file. \\
+    C-c C-a  & Compile and view pdf.\\
+    C-c C-p C-d  & Preview latex equation.\\
+    C-c C-p C-p  & Undue preview of equation.\\
+    C-c =  & Return Table of Contents.\\
+    C-c w & word count. \\
+    C-c u & word count in multi-part document total. \\
+    C-c v & word count in multi-part document section. \\
+    M-=  & Return No. words in region.\\
+    M-x tex-validate-region  & Check for syntax errors.\\
+     & \\
+\noindent{\bfseries Help} & \\
+    C-h c & Basic help command.\\
+    C-h C & Help on interactive functions.\\
+    C-h k & Explain entered keybinding.\\
+    C-h f & dostring for a function.\\
+    C-h F & Manual entry for a function.\\
+    C-h i & Read included manuals.\\
+    C-h a & Orderless search for an interactive command.\\
+    M-x apropos & Search all functions, variables, faces. \\
+    M-x apropos-documentation & Search doc strings.\\
+    M-x apropos-variables & Search for variables. \\
+    M-x apropos-value & Find variables by their value. \\
+    M-x apropos-library & Show all symbols in a package. \\
+     & \\
+\noindent{\bfseries Cider} & \\
+    C-h f RET &  \\
+    cider-repl-mode  & List of commands.\\
+    C-c C-b & Interrupt pending evaluations.\\
+    C-RET & Close unmatched parentheses and evaluate.\\
+    C-c C-o & Remove output from previous evaluation. \\
+    C-c M-o & Switch from Clojure to ClojureScript.\\
+    C-c C-x j j & cider-jack-in for Clojure.\\
+    C-c M-j & cider-jack-in for Clojure.\\
+    C-c C-x C-j C-j & cider-jack-in for ClojureScript.\\
+    M-1 C-c C-x j u & jack-in with clojure-cli.\\
+    M-2 C-c C-x j u & jack-in with leiningen.\\
+    M-3 C-c C-x j u & jack-in with babashka.\\
+    M-4 C-c C-x j u & jack-in with nbb.\\
+     & \\
+\noindent{\bfseries Magit} & \\
+    C-x g & magit status.\\
+    C-c 2 & magit hydra prefix. \\
+    C-x M-g & transient and dwin commands.\\
+     & \\
+\noindent{\bfseries Org-mode} & \\
+     C-c c & Org capture. \\
+     C-c l & Org store link. \\
+     C-c o & org-pomodoro. \\
+      & \\
+\noindent{\bfseries Org-agenda} & \\
+    C-c a a & Org agenda. \\
+    C-c 1  & hdyra for project files.\\
+\end{tabular}
+\end{footnotesize}
+\end{minipage} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COLUMN 4 - Tree-sitter, Clerk
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{minipage}{270pt}
+\begin{footnotesize}
+\begin{tabular}{>{\bfseries}l l}
+\noindent{\bfseries Tree-sitter} & \\
+    C-c o o  & Combobulate with tree-sitter.\\
+     & \\
+\noindent{\bfseries Clerk} & \\
+    M-RET & clerk show. \\
+\end{tabular}
+\end{footnotesize}
+\end{minipage}
+
+   }; % End of overlay node
+\end{tikzpicture}
+#+END_EXPORT
+
+# ============================================================
+# CUSTOMIZATION TIPS FOR ORG-MODE USERS
+# ============================================================
+#
+# If you're comfortable with org-mode but not LaTeX, here are some tips:
+#
+# 1. TO CHANGE THE BACKGROUND IMAGE:
+#    Find line 38 above and change the path to your image
+#
+# 2. TO CHANGE TEXT COLOR:
+#    Line 36 has \color{lime} - change 'lime' to:
+#    white, black, red, blue, green, yellow, cyan, magenta
+#    Or use: \color{white!80} for 80% white (semi-transparent)
+#
+# 3. TO MOVE THE TEXT OVERLAY:
+#    Line 40 has \node at (1.02,0)
+#    Change (1.02,0) to different coordinates to move the text
+#    Higher first number = further right
+#    Higher second number = further up
+#
+# 4. TO CHANGE TEXT SIZE:
+#    Find \begin{footnotesize} and change to:
+#    \begin{tiny}, \begin{scriptsize}, \begin{small},
+#    \begin{normalsize}, \begin{large}, or \begin{Large}
+#
+# 5. TO EDIT THE KEYBINDINGS:
+#    Just edit the text between \begin{tabular} and \end{tabular}
+#    Format: KeyBinding & Description \\
+#    The & separates columns, \\ ends a line
+#
+# ============================================================
+
+# ============================================================
+# LOCAL VARIABLES (Don't delete these!)
+# ============================================================
+# These tell Emacs to use the 'standalone' document class.
+# When you open this file, Emacs will ask if you trust these.
+# Type 'y' to allow - it's safe!
+# ============================================================
+# Local Variables:
+# eval: (add-to-list 'org-latex-classes '("standalone" "\\documentclass{standalone}" ("\\section{%s}" . "\\section*{%s}") ("\\subsection{%s}" . "\\subsection*{%s}") ("\\subsubsection{%s}" . "\\subsubsection*{%s}") ("\\paragraph{%s}" . "\\paragraph*{%s}") ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+# End:
