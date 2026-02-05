@@ -1,0 +1,165 @@
+#+TITLE: Emacs Key Bindings Cheat Sheet
+#+AUTHOR: Your Name Here  
+#+OPTIONS: toc:nil date:nil title:nil author:nil
+
+# ============================================================
+# ALTERNATIVE METHOD (if local variables don't work)
+# ============================================================
+# This version uses #+BIND instead of local variables
+# It will work even if local variables are disabled
+# ============================================================
+
+#+BIND: org-latex-classes (cons '("standalone" "\\documentclass{standalone}" ("\\section{%s}" . "\\section*{%s}")) org-latex-classes)
+#+LATEX_CLASS: standalone
+#+LATEX_CLASS_OPTIONS: [10.5pt]
+#+LATEX_HEADER: \usepackage{graphicx}
+#+LATEX_HEADER: \usepackage{xcolor}
+#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usepackage{array}
+#+LATEX_HEADER: \usepackage{parskip}
+#+LATEX_HEADER: \def\bll{\boldmath$<$}
+#+LATEX_HEADER: \def\blg{\boldmath$>$}
+
+#+BEGIN_EXPORT latex
+\begin{tikzpicture}
+    \color{lime}
+   % CHANGE THIS PATH TO YOUR IMAGE:
+   \node at (0,0) {\includegraphics[width=3.5\textwidth]{~/Pictures/ChineseWall3.png}};
+   
+   % This positions the text overlay at coordinates (1.02, 0)
+   \node at (1.02,0) {
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COLUMN 1 - Undo, Save, Exit, Navigation, Buffer Control
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{minipage}{270pt}
+\begin{footnotesize}
+\begin{tabular}{>{\bfseries}l l}
+\noindent{\bfseries Undo, Save, Exit} & \\
+    C-u n & Repeat $<$comand$>$ n times.\\ 
+    C-g & No do last command. \\
+    C-x C-c & Exit. \\
+    C-x C-s & Save buffer to a file. \\
+    C-x C-w & Save to specified file. \\
+    C-c d & Delete trailing whitespace.\\
+    s-n & awesome-tab select visible tab.\\
+    C-x / g n & google-this, no prompt.\\
+    M-; & comment or uncomment lines. \\
+    M-i & Pop-up menu with buffer index.\\
+ & \\
+\noindent{\bfseries Navigation} & \\
+    C-v & Go to next page.\\
+    M-v & Go to previous page.\\
+    C-l & Move the screen around the cursor's line.\\ 
+    &(once $->$ center,\\ 
+    &twice $->$ top,\\ 
+    &three times $->$ bottom).\\
+    C-n & Next line.\\
+    C-p & Previous line.\\
+    C-b & Previous character (Backward).\\
+    C-f & Next character (Forward).\\
+    C-a & Beginning of line.\\
+    C-e & End of line.\\
+    M-f & Forward a word.\\
+    M-b & Backward a word.\\
+    M-a & Back to the beginning of the sentence.\\
+    M-e & Forward to the end of the sentence.\\
+    M-\blg:& Move to End of file.\\
+    M-\bll:& Move to the beginning of the file.\\
+    & \\
+\noindent{\bfseries Buffer control} & \\
+    C-x b & Select buffer; [tab] for possible buffers.\\
+    C-1 & Kill current buffer. \\
+    C-x 0 & Kill the current buffer. \\
+    C-x 1 & Kill all buffers except the current buffer.\\
+    C-x 2 & Split current window horizontally.\\
+    C-x 3 & Split current window vertically.\\
+    C-x o & Move cursor to the other window.\\
+    C-M-v & Scrolls other window.\\
+    C-x C-b & ibuffer.\\
+    C-x C-j & dired jump. \\
+    C-c m & Switch to minibuffer.\\
+ & \\
+\noindent{\bfseries Delete and kill} & \\
+    \bll DEL\blg & Delete char just before point.\\
+    C-d & Delete char just after point.\\
+    M-\bll DEL\blg & Kill word just before the point.\\
+    M-d & Kill word just after the point.\\
+    C-k & Kill from point to end of line.\\
+    M-k & Kill from point to end of sentence.\\
+    C-w & Kill from mark to point.\\
+\end{tabular}
+\end{footnotesize}
+\end{minipage}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COLUMN 2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{minipage}{270pt}
+\begin{footnotesize}
+\begin{tabular}{>{\bfseries}l l}
+\noindent{\bfseries Restore killed text ``Yanking''} & \\
+    C-y & Restore last killed text.\\
+    M-y & Restore previously killed text.\\
+    C-/, C-x u, C-\_ & Undo last command.\\
+    C-\bll SPC\blg & Mark selection. \\
+ & \\
+\noindent{\bfseries Files \& Buffers} & \\
+   C-x C-f: & Find a file.\\
+   C-x C-s: & Save active file.\\
+   C-x C-b: & List buffers.\\
+   C-x b \bll BufferName\blg:& Visit buffer.\\
+   C-x s & Save some buffers.\\
+   C-x C-c & Exit emacs.\\
+   C-z & Suspend emacs\\
+\end{tabular}
+\end{footnotesize}
+\end{minipage}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COLUMN 3
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{minipage}{310pt}
+\begin{footnotesize}
+\begin{tabular}{>{\bfseries}l l}
+\noindent{\bfseries Help} & \\
+    C-h c & Basic help command.\\
+    C-h C & Help on interactive functions.\\
+    C-h k & Explain entered keybinding.\\
+    C-h f & dostring for a function.\\
+    C-h F & Manual entry for a function.\\
+    C-h i & Read included manuals.\\
+\end{tabular}
+\end{footnotesize}
+\end{minipage} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COLUMN 4
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{minipage}{270pt}
+\begin{footnotesize}
+\begin{tabular}{>{\bfseries}l l}
+\noindent{\bfseries Org-mode} & \\
+     C-c c & Org capture. \\
+     C-c l & Org store link. \\
+     C-c o & org-pomodoro. \\
+\end{tabular}
+\end{footnotesize}
+\end{minipage}
+
+   }; % End of overlay node
+\end{tikzpicture}
+#+END_EXPORT
+
+* Notes
+
+This version uses #+BIND to set up the standalone class.
+The #+BIND line (line 13) does the same thing as local variables,
+but works even if local variables are disabled in your Emacs.
+
+To export: C-c C-e l p
+
+The PDF will be exactly the size of your image + text overlay.
