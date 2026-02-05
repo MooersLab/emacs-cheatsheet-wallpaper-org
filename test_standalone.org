@@ -1,0 +1,19 @@
+#+TITLE: Test Standalone Class
+#+OPTIONS: toc:nil date:nil title:nil author:nil
+#+LATEX_CLASS: standalone
+#+LATEX_CLASS_OPTIONS: [border=10pt]
+
+#+BEGIN_EXPORT latex
+\Huge Hello World!
+
+This is a test of the standalone document class.
+
+If this PDF is exactly the size of this text (plus a small border),
+then standalone is working correctly!
+
+If this PDF is US Letter size, then standalone is NOT working.
+#+END_EXPORT
+
+# Local Variables:
+# eval: (add-to-list 'org-latex-classes '("standalone" "\\documentclass{standalone}" ("\\section{%s}" . "\\section*{%s}")))
+# End:
